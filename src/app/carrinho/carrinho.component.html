@@ -1,0 +1,60 @@
+<div class="row">
+
+  <div class="col s12">
+
+      <div class="col s4"></div>
+
+        <div class="col s8">
+
+
+          <div class="row">
+
+            <div *ngIf="getCartDetails">
+
+            <table>
+
+                <thead>
+                  <th>Item</th>
+                  <th>Breed</th>
+                  <th>Quantidade</th>
+                  <th>Valor</th>
+                  <th>Subtotal</th>
+                  <th>Remover</th>
+                </thead>
+
+
+                  <tbody>
+
+                    <tr *ngFor="let getCartDetail of getCartDetails">
+
+                      <td><img alt="doggo" src="{{getCartDetail.photo}}" class="dogpic"></td>
+                      <td>{{getCartDetail.breed}}</td>
+
+                      <td>
+                        <div class="cartaddicons">
+                          <a class="btn-floating btn-small waves-effect waves-light red"
+                          (click)="incQty(getCartDetail.icon, getCartDetail.qty)">
+                            <i class="material-icons">add</i>
+                          </a>
+                          {{getCartDetail.qty}}
+                          <a class="btn-floating btn-small waves-effect waves-light red" ><i class="material-icons" (click)="decQty(getCartDetail.icon, getCartDetail.qty)">remove</i></a>
+                        </div>
+                      </td>
+
+                      <td>{{ getCartDetail.price | currency }}</td>
+                      <td>{{ getCartDetail.qty * getCartDetail.price | currency }}</td>
+                      <td> <a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons" (click)="singledelete(getCartDetail.icon)">clear</i></a></td>
+
+                    </tr>
+
+                  </tbody></table>
+
+                        <div class="subtotal">
+                          Total: {{total | currency}}
+                          <a class="waves-effect waves-light btn"><i class="material-icons left" (click)="removeall()">cloud</i>Remover tudo</a>
+                        </div>
+
+</div></div></div></div></div>
+
+
+
